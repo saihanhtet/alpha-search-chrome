@@ -17,13 +17,17 @@
     class="d-flex justify-content-start align-items-center flex-column"
   >
     <div class="p-3">
-      <form action="https://www.google.com/" method="post" autocomplete="off">
+      <form
+        action="https://www.google.com/search"
+        method="get"
+        autocomplete="off"
+      >
         <input
           type="text"
-          name="q_search"
+          name="q"
           id="q_search"
           class="form-control p-2 shadow-sm border-1 rounded-3"
-          placeholder="Search anythings in Here!"
+          placeholder="Search anything here!"
         />
       </form>
     </div>
@@ -62,5 +66,31 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script>
+      // Function to remove URL parameters
+      function removeURLParams() {
+        history.replaceState({}, document.title, window.location.pathname);
+      }
+
+      // Call removeURLParams function on document load
+      window.addEventListener("load", removeURLParams);
+
+      // Handle form submission
+      document
+        .getElementById("searchForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Get the search query value
+          const query = document.getElementById("q_search").value;
+
+          // Perform actions with the query, for instance, log it to console
+          console.log("Search Query:", query);
+          // Here you can perform any other action, like displaying results or making an API call
+
+          // Clear the input field if needed
+          document.getElementById("q_search").value = "";
+        });
+    </script>
   </body>
 </html>
