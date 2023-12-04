@@ -102,3 +102,42 @@ body {
     transform: rotate(0deg);
   }
 }
+
+#searchResults {
+  display: flex;
+  height: 85vh;
+  overflow-y: scroll;
+}
+ul {
+  padding: 10px;
+}
+
+.card {
+  background-color: #1b4e5f;
+  color: white !important;
+}
+.card a {
+  color: yellow;
+  text-decoration: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2a3139;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: blueviolet;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

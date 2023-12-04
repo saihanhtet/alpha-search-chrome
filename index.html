@@ -11,17 +11,17 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./style.css" />
+    <script
+      async
+      src="https://cse.google.com/cse.js?cx=c16f280b6147443be"
+    ></script>
   </head>
   <body
     style="width: 100vw; height: 100vh; position: relative"
     class="d-flex justify-content-start align-items-center flex-column"
   >
     <div class="p-3">
-      <form
-        action="https://www.google.com/search"
-        method="get"
-        autocomplete="off"
-      >
+      <form id="searchForm" autocomplete="off" method="post">
         <input
           type="text"
           name="q"
@@ -32,7 +32,7 @@
       </form>
     </div>
     <div class="container-fluid row p-2 h-100 w-100">
-      <div class="col-md-4 p-2">
+      <div class="col-md-4">
         <div
           class="bg-transparent rounded-3 shadow-sm h-100 w-100 body-wrapper"
         >
@@ -54,11 +54,12 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 p-2">
-        <div class="bg-transparent rounded-3 shadow-sm h-100 w-100"></div>
-      </div>
-      <div class="col-md-4 p-2">
-        <div class="bg-transparent rounded-3 shadow-sm h-100 w-100"></div>
+      <div class="col-md-8">
+        <div class="bg-transparent rounded-3 shadow-sm h-100 w-100">
+          <div class="h-100 w-100 text-white">
+            <div id="searchResults"></div>
+          </div>
+        </div>
       </div>
     </div>
     <script
@@ -66,31 +67,44 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-      // Function to remove URL parameters
-      function removeURLParams() {
-        history.replaceState({}, document.title, window.location.pathname);
+      $(document).ready(function () {
+        $("#searchForm").submit(function (event) {
+          event.preventDefault();
+          const query = $("#q_search").val();
+          fetchSearchResults(query);
+          $("#q_search").val("");
+        });
+      });
+
+      function fetchSearchResults(query) {
+        const cx = "c16f280b6147443be"; // Replace with your Custom Search Engine ID
+        const apiKey = "AIzaSyBvvoHzcUGqT2XXz08o-I2ug57jMkpfRo0"; // Replace with your API key
+
+        const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${query}`;
+
+        $.ajax({
+          url: url,
+          dataType: "json",
+          success: function (data) {
+            displayResults(data.items);
+          },
+          error: function () {
+            $("#searchResults").html("Error fetching results");
+          },
+        });
       }
 
-      // Call removeURLParams function on document load
-      window.addEventListener("load", removeURLParams);
-
-      // Handle form submission
-      document
-        .getElementById("searchForm")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent the default form submission
-
-          // Get the search query value
-          const query = document.getElementById("q_search").value;
-
-          // Perform actions with the query, for instance, log it to console
-          console.log("Search Query:", query);
-          // Here you can perform any other action, like displaying results or making an API call
-
-          // Clear the input field if needed
-          document.getElementById("q_search").value = "";
+      function displayResults(items) {
+        let resultsHTML = "<ul>";
+        items.forEach(function (item) {
+          resultsHTML += `<li class="card p-2 mb-2 rounded-1 shadow-sm"><a href="${item.link}">${item.title}</a><p>${item.snippet}</p></li>`;
         });
+        resultsHTML += "</ul>";
+
+        $("#searchResults").html(resultsHTML);
+      }
     </script>
   </body>
 </html>
