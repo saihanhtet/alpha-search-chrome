@@ -1,161 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ALPHA GOOGLE SEARCH</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        #q_search{
-            width: 500px;
-            font-family: monospace;
-            font-weight: 500; 
-            letter-spacing: 1px;
-        }
-        body{
-            background: radial-gradient(#353c44, #222931);
-        }
-        .reactor-container {
-            width: 300px;
-            height: 300px;
-            margin: auto;
-            position: relative;
-        }
-        .circle {
-            border-radius: 50%;
-        }
-        .abs-center {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            margin: auto;
-        }
-        .core-inner {
-            width: 70px;
-            height: 70px;
-            border: 5px solid #1B4E5F;
-            background-color: #FFFFFF;
-            box-shadow: 0px 0px 7px 5px lightblue, 0px 0px 10px 10px lightblue inset;
-        }
-        .core-outer {
-            width: 120px;
-            height: 120px;
-            border: 1px solid lightblue;
-            background-color: #FFFFFF;
-            box-shadow: 0px 0px 2px 1px lightblue, 0px 0px 10px 5px lightblue inset;
-        }
-        .core-wrapper {
-            width: 180px;
-            height: 180px;
-            background-color: #073c4b;
-            box-shadow: 0px 0px 5px 4px lightblue, 0px 0px 6px 2px lightblue inset;
-        }
-        .tunnel {
-            width: 220px;
-            height: 220px;
-            background-color: #FFFFFF;
-            box-shadow: 0px 0px 5px 1px lightblue, 0px 0px 5px 4px lightblue inset;
-        }
-        .coil-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            animation-name: reactor-anim;
-            animation: 5s infinite linear reactor-anim;
-        }
-        .coil {
-            position: absolute;
-            width: 30px;
-            height: 20px;
-            top: calc(50% - 110px);
-            left: calc(50% - 15px);
-            transform-origin: 15px 110px;
-            background-color:#073c4b;
-            box-shadow: 0px 0px 5px lightblue inset;
-        }
-        .coil-1 {
-            transform: rotate(0deg);
-        }
-        .coil-2 {
-            transform: rotate(45deg);
-        }
-        .coil-3 {
-            transform: rotate(90deg);
-        }
-        .coil-4 {
-            transform: rotate(135deg);
-        }
-        .coil-5 {
-            transform: rotate(180deg);
-        }
-        .coil-6 {
-            transform: rotate(225deg);
-        }
-        .coil-7 {
-            transform: rotate(270deg);
-        }
-        .coil-8 {
-            transform: rotate(315deg);
-        }
-        @keyframes reactor-anim {
-            0% {
-                transform: rotate(0deg);
-            }
-            50%{
-                transform: rotate(360deg);
-            }
-            100% {
-                transform: rotate(0deg);
-            }
-        }
-    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body style="width: 100vw; height: 100vh; position: relative;"
-        class="d-flex justify-content-start align-items-center flex-column">
+  <body
+    style="width: 100vw; height: 100vh; position: relative"
+    class="d-flex justify-content-start align-items-center flex-column"
+  >
     <div class="p-3">
-        <form action="" method="post" autocomplete="off">
-            <input 
-                type="text" 
-                name="q_search" 
-                id="q_search" 
-                class="form-control 
-                p-2 
-                shadow-sm border-1 
-                rounded-3
-                "
-                placeholder="Search anythings in Here!">
-        </form>
+      <form action="" method="post" autocomplete="off">
+        <inputg
+          type="text"
+          name="q_search"
+          id="q_search"
+          class="form-control p-2 shadow-sm border-1 rounded-3"
+          placeholder="Search anythings in Here!"
+        />
+      </form>
     </div>
     <div class="container-fluid row p-2 h-100 w-100">
-        <div class="col-md-4 p-2">
-            <div class="bg-transparent rounded-3 shadow-sm h-100 w-100 body-wrapper">
-                <div class="reactor-container">
-                    <div class="tunnel circle abs-center"></div>
-                    <div class="core-wrapper circle abs-center"></div>
-                    <div class="core-outer circle abs-center"></div>
-                    <div class="core-inner circle abs-center"></div>
-                    <div class="coil-container">
-                    <div class="coil coil-1"></div>
-                    <div class="coil coil-2"></div>
-                    <div class="coil coil-3"></div>
-                    <div class="coil coil-4"></div>
-                    <div class="coil coil-5"></div>
-                    <div class="coil coil-6"></div>
-                    <div class="coil coil-7"></div>
-                    <div class="coil coil-8"></div>
-                    </div>
-                </div>
+      <div class="col-md-4 p-2">
+        <div
+          class="bg-transparent rounded-3 shadow-sm h-100 w-100 body-wrapper"
+        >
+          <div class="reactor-container">
+            <div class="tunnel circle abs-center"></div>
+            <div class="core-wrapper circle abs-center"></div>
+            <div class="core-outer circle abs-center"></div>
+            <div class="core-inner circle abs-center"></div>
+            <div class="coil-container">
+              <div class="coil coil-1"></div>
+              <div class="coil coil-2"></div>
+              <div class="coil coil-3"></div>
+              <div class="coil coil-4"></div>
+              <div class="coil coil-5"></div>
+              <div class="coil coil-6"></div>
+              <div class="coil coil-7"></div>
+              <div class="coil coil-8"></div>
             </div>
+          </div>
         </div>
-        <div class="col-md-4 p-2">
-            <div class="bg-transparent rounded-3 shadow-sm h-100 w-100"></div>
-        </div>
-        <div class="col-md-4 p-2">
-            <div class="bg-transparent rounded-3 shadow-sm h-100 w-100"></div>
-        </div>
+      </div>
+      <div class="col-md-4 p-2">
+        <div class="bg-transparent rounded-3 shadow-sm h-100 w-100"></div>
+      </div>
+      <div class="col-md-4 p-2">
+        <div class="bg-transparent rounded-3 shadow-sm h-100 w-100"></div>
+      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
